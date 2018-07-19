@@ -61,9 +61,9 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-        <div class="button">
+        <div className="button">
           <button onClick={ () => this.handleRefresh() }>
-            Refresh
+            Restart Game
           </button>
         </div>
       </div>
