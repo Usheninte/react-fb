@@ -27,6 +27,10 @@ class Board extends React.Component {
     this.setState({squares: squares});
   }
 
+  handleRefresh() {
+    window.location.reload();
+  }
+
   renderSquare(i) {
     return (
       <Square 
@@ -56,6 +60,11 @@ class Board extends React.Component {
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
+        </div>
+        <div class="button">
+          <button onClick={ () => this.handleRefresh() }>
+            Refresh
+          </button>
         </div>
       </div>
     );
