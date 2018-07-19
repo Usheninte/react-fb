@@ -46,6 +46,7 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+        {{/* the button below is a deviation from the Official tutorial ... I felt it was necessary */}}
         <div className="button">
           <button onClick={ () => this.handleRefresh() }>
             Restart Game
@@ -69,13 +70,17 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
-    const squares = this.state.squares.slice();
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O' ;
     this.setState({
-      squares: squares,
+      history: history.concat([{
+        squares: squares,
+      }]),
       xIsNext: !this.state.xIsNext,
     });
   }
