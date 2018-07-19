@@ -22,8 +22,8 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square 
-        value={this.props.squares[i]} 
-        onClick={ () => this.props.onClick(i) }
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
@@ -66,7 +66,7 @@ class Game extends React.Component {
         squares: Array(9).fill(null),
       }],
       xIsNext: true,
-    }
+    };
   }
 
   handleClick(i) {
@@ -95,21 +95,17 @@ class Game extends React.Component {
         'Go to move #' + move :
         'Go to Game start';
       return (
-        <li>
-          <button
-            onClick={ () => this.jumpTo(move) }
-          >
-            {desc}
-          </button>
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
-      )
+      );
     });
 
     let status;
-    if(winner) {
+    if (winner) {
       status = 'Winner: ' + winner;
     } else {
-      status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -117,7 +113,7 @@ class Game extends React.Component {
         <div className="game-board">
           <Board 
             squares={current.squares}
-            onClick={ (i) => this.handleClick(i) }
+            onClick={(i) => this.handleClick(i)}
           />
         </div>
         <div className="game-info">
@@ -128,6 +124,13 @@ class Game extends React.Component {
     );
   }
 }
+
+// ========================================
+
+ReactDOM.render(
+  <Game />,
+  document.getElementById('root')
+);
 
 function calculateWinner(squares) {
   const lines = [
@@ -148,10 +151,3 @@ function calculateWinner(squares) {
   }
   return null;
 }
-
-// ========================================
-
-ReactDOM.render(
-  <Game />,
-  document.getElementById('root')
-);
