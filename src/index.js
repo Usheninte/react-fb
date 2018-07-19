@@ -15,10 +15,6 @@ function Square (props) {
 
 class Board extends React.Component {
 
-  handleRefresh() {
-    window.location.reload();
-  }
-
   renderSquare(i) {
     return (
       <Square 
@@ -45,12 +41,6 @@ class Board extends React.Component {
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
-        </div>
-        {{/* the button below is a deviation from the Official tutorial ... I felt it was necessary */}}
-        <div className="button">
-          <button onClick={ () => this.handleRefresh() }>
-            Restart Game
-          </button>
         </div>
       </div>
     );
@@ -125,13 +115,6 @@ class Game extends React.Component {
   }
 }
 
-// ========================================
-
-ReactDOM.render(
-  <Game />,
-  document.getElementById('root')
-);
-
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -151,3 +134,10 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
+// ========================================
+
+ReactDOM.render(
+  <Game />,
+  document.getElementById('root')
+);
